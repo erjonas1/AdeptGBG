@@ -1,0 +1,4 @@
+rm -f try_withDist.fmutmp/sources/try_withDist_init.xml
+cp -a /usr/include/omc/c/* try_withDist.fmutmp/sources/include/
+cp -a /usr/share/omc/runtime/c/fmi/buildproject/* try_withDist.fmutmp/sources
+cp -a try_withDist_FMU.libs try_withDist.fmutmp/sources/
