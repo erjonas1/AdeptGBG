@@ -6,17 +6,17 @@ model try_withDist
   Modelica.Blocks.Sources.Constant Veh_Speed(k = 0.5)  annotation(
     Placement(visible = true, transformation(origin = {54, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Steer_Ang1_Output annotation(
-    Placement(visible = true, transformation(origin = {58, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {58, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {236, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {236, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Steer_Vel annotation(
     Placement(visible = true, transformation(origin = {-54, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-54, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Veh_Fwd_Vel annotation(
-    Placement(visible = true, transformation(origin = {168, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {168, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {234, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {234, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Veh_Jerk annotation(
     Placement(visible = true, transformation(origin = {-50, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-50, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Veh_Acc annotation(
     Placement(visible = true, transformation(origin = {-50, 142}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-50, 142}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Ang_Steer1_Input annotation(
-    Placement(visible = true, transformation(origin = {-144, 18}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-144, 18}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-318, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-318, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Logical.Greater greater1 annotation(
     Placement(visible = true, transformation(origin = {-34, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant Safety_Dist(k = 100)  "mm" annotation(
@@ -26,20 +26,26 @@ model try_withDist
   Modelica.Blocks.Sources.Constant Zero2(k = 0)  annotation(
     Placement(visible = true, transformation(origin = {54, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Dist_to_Ball annotation(
-    Placement(visible = true, transformation(origin = {-172, -70}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-172, -70}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-318, -14}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-318, -14}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Add_1 add_11 annotation(
-    Placement(visible = true, transformation(origin = {-40, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-25, 25}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput Ang_Wheel_Input annotation(
+    Placement(visible = true, transformation(origin = {-318, 56}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-318, 56}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation
-  connect(Ang_Steer1_Input, add_11.u) annotation(
-    Line(points = {{-144, 18}, {-54, 18}, {-54, 20}, {-54, 20}}, color = {0, 0, 127}));
-  connect(add_11.y, Steer_Ang1_Output) annotation(
-    Line(points = {{-34, 20}, {54, 20}, {54, 20}, {58, 20}}, color = {0, 0, 127}));
+  connect(add_11.Ang_Wheel_Input, Ang_Wheel_Input) annotation(
+    Line(points = {{-70, 38}, {-312, 38}, {-312, 56}, {-318, 56}}, color = {0, 0, 127}));
+  connect(add_11.Ang_Steer1_Input, Ang_Steer1_Input) annotation(
+    Line(points = {{-70, 26}, {-308, 26}, {-308, 20}, {-318, 20}}, color = {0, 0, 127}));
+  connect(add_11.Dist_to_Ball, Dist_to_Ball) annotation(
+    Line(points = {{-70, 12}, {-148, 12}, {-148, -12}, {-318, -12}, {-318, -14}}, color = {0, 0, 127}));
+  connect(add_11.Steer_Ang1_Output, Steer_Ang1_Output) annotation(
+    Line(points = {{30, 22}, {230, 22}, {230, 20}, {236, 20}}, color = {0, 0, 127}));
   connect(Dist_to_Ball, greater1.u1) annotation(
-    Line(points = {{-172, -70}, {-46, -70}, {-46, -74}}, color = {0, 0, 127}));
+    Line(points = {{-318, -14}, {-166, -14}, {-166, -59}, {-46, -59}, {-46, -74}}, color = {0, 0, 127}));
+  connect(switch1.y, Veh_Fwd_Vel) annotation(
+    Line(points = {{117, -74}, {234, -74}}, color = {0, 0, 127}));
   connect(Zero2.y, switch1.u3) annotation(
     Line(points = {{66, -100}, {94, -100}, {94, -82}, {94, -82}}, color = {0, 0, 127}));
-  connect(switch1.y, Veh_Fwd_Vel) annotation(
-    Line(points = {{117, -74}, {168, -74}}, color = {0, 0, 127}));
   connect(Veh_Speed.y, switch1.u1) annotation(
     Line(points = {{66, -48}, {92, -48}, {92, -66}, {94, -66}}, color = {0, 0, 127}));
   connect(greater1.y, switch1.u2) annotation(
