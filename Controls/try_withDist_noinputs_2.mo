@@ -1,4 +1,4 @@
-model try_withDist
+model try_withDist_noinputs_2
   Modelica.Blocks.Sources.Constant Zero(k = 0)  annotation(
     Placement(visible = true, transformation(origin = {-132, 134}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant Rate_Steer(k = 0.1)  annotation(
@@ -25,7 +25,7 @@ model try_withDist
     Placement(visible = true, transformation(origin = {54, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Add_1 add_11 annotation(
     Placement(visible = true, transformation(origin = {-25, 25}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  Modelica.Blocks.Sources.Sine Dist_to_ball(offset = 100)  annotation(
+  Modelica.Blocks.Sources.Sine Dist_to_ball annotation(
     Placement(visible = true, transformation(origin = {-310, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Sine Ang_steer1_input annotation(
     Placement(visible = true, transformation(origin = {-312, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -60,4 +60,4 @@ equation
     Line(points = {{-120, 134}, {-58, 134}, {-58, 142}, {-50, 142}}, color = {0, 0, 127}));
   annotation(
     uses(Modelica(version = "3.2.2")),
-    Diagram);end try_withDist;
+    Diagram);end try_withDist_noinputs_2;

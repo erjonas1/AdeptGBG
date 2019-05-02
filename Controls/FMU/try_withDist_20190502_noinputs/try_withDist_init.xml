@@ -1,0 +1,958 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<!-- description of the model interface using an extention of the FMI standard -->
+<fmiModelDescription
+  fmiVersion                          = "1.0"
+
+  modelName                           = "try_withDist"
+  modelIdentifier                     = "try_withDist"
+
+  OPENMODELICAHOME                    = "/usr"
+
+  guid                                = "{d14ddfbf-88c4-4ff0-966b-20af3dba9560}"
+
+  description                         = ""
+  generationTool                      = "OpenModelica Compiler OpenModelica 1.13.2"
+  generationDateAndTime               = "2019-05-02T18:46:15Z"
+
+  variableNamingConvention            = "structured"
+
+  numberOfEventIndicators             = "4"  cmt_numberOfEventIndicators             = "NG:       number of zero crossings,                           FMI"
+  numberOfTimeEvents                  = "0"  cmt_numberOfTimeEvents                  = "NG_SAM:   number of zero crossings that are samples,          OMC"
+
+  numberOfInputVariables              = "0"  cmt_numberOfInputVariables              = "NI:       number of inputvar on topmodel,                     OMC"
+  numberOfOutputVariables             = "5"  cmt_numberOfOutputVariables             = "NO:       number of outputvar on topmodel,                    OMC"
+
+  numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
+  numberOfFunctions                   = "0"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
+
+  numberOfContinuousStates            = "0"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "16"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "30"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "25"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+
+  numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
+  numberOfIntegerAliasVariables       = "0"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
+  numberOfIntegerParameters           = "0"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+
+  numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
+  numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
+  numberOfStringParameters            = "0"  cmt_numberOfStringParameters            = "NPSTR:    number of string parameters,                        OMC"
+
+  numberOfBooleanAlgebraicVariables   = "1"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
+  numberOfBooleanAliasVariables       = "1"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
+  numberOfBooleanParameters           = "2"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+
+
+  <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
+  <DefaultExperiment
+    startTime      = "0"
+    stopTime       = "1"
+    stepSize       = "0.002"
+    tolerance      = "1e-06"
+    solver        = "dassl"
+    outputFormat      = "mat"
+    variableFilter      = ".*" />
+
+  <!-- variables in the model -->
+  <ModelVariables>
+
+  <ScalarVariable
+    name = "Ang_steer1_input.y"
+    valueReference = "1000"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_wheel_input.y"
+    valueReference = "1001"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Dist_to_ball.y"
+    valueReference = "1002"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "2" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Steer_Ang1_Output"
+    valueReference = "1003"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "3" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Basic_Contol_Model_v1.mo" startLine = "8" startColumn = "3" endLine = "9" endColumn = "201" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Steer_Vel"
+    valueReference = "1004"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "4" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Basic_Contol_Model_v1.mo" startLine = "10" startColumn = "3" endLine = "11" endColumn = "201" fileWritable = "true">
+    <Real start="0.1" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Veh_Acc"
+    valueReference = "1005"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "5" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Basic_Contol_Model_v1.mo" startLine = "16" startColumn = "3" endLine = "17" endColumn = "203" fileWritable = "true">
+    <Real start="0.0" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Veh_Fwd_Vel"
+    valueReference = "1006"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "6" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Basic_Contol_Model_v1.mo" startLine = "12" startColumn = "3" endLine = "13" endColumn = "203" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Veh_Jerk"
+    valueReference = "1007"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "7" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Basic_Contol_Model_v1.mo" startLine = "14" startColumn = "3" endLine = "15" endColumn = "203" fileWritable = "true">
+    <Real start="0.0" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.abs1.u"
+    valueReference = "1008"
+    description = "Connector of Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "8" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "296" startColumn = "5" endLine = "297" endColumn = "58" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.abs1.y"
+    valueReference = "1009"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "9" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "298" startColumn = "5" endLine = "299" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add1.u2"
+    valueReference = "1010"
+    description = "Connector of Real input signal 2"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "10" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "313" startColumn = "5" endLine = "314" endColumn = "59" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add1.y"
+    valueReference = "1011"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "11" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "315" startColumn = "5" endLine = "316" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add2.u2"
+    valueReference = "1012"
+    description = "Connector of Real input signal 2"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "12" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "313" startColumn = "5" endLine = "314" endColumn = "59" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.asin1.u"
+    valueReference = "1013"
+    description = "Connector of Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "13" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "296" startColumn = "5" endLine = "297" endColumn = "58" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.product1.u1"
+    valueReference = "1014"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "14" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "311" startColumn = "5" endLine = "312" endColumn = "57" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.product2.u2"
+    valueReference = "1015"
+    description = "Connector of Real input signal 2"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "15" classType = "rAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "313" startColumn = "5" endLine = "314" endColumn = "59" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_steer1_input.amplitude"
+    valueReference = "1016"
+    description = "Amplitude of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "553" startColumn = "5" endLine = "553" endColumn = "56" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_steer1_input.freqHz"
+    valueReference = "1017"
+    description = "Frequency of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "1" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "554" startColumn = "5" endLine = "554" endColumn = "73" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" unit="Hz" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_steer1_input.offset"
+    valueReference = "1018"
+    description = "Offset of output signal"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "2" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "556" startColumn = "5" endLine = "556" endColumn = "54" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_steer1_input.phase"
+    valueReference = "1019"
+    description = "Phase of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "3" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "555" startColumn = "5" endLine = "555" endColumn = "57" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" unit="rad" displayUnit="deg" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_steer1_input.startTime"
+    valueReference = "1020"
+    description = "Output = offset for time &lt; startTime"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "4" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "557" startColumn = "5" endLine = "557" endColumn = "78" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" unit="s" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_wheel_input.amplitude"
+    valueReference = "1021"
+    description = "Amplitude of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "5" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "553" startColumn = "5" endLine = "553" endColumn = "56" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_wheel_input.freqHz"
+    valueReference = "1022"
+    description = "Frequency of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "6" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "554" startColumn = "5" endLine = "554" endColumn = "73" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" unit="Hz" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_wheel_input.offset"
+    valueReference = "1023"
+    description = "Offset of output signal"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "7" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "556" startColumn = "5" endLine = "556" endColumn = "54" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_wheel_input.phase"
+    valueReference = "1024"
+    description = "Phase of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "8" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "555" startColumn = "5" endLine = "555" endColumn = "57" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" unit="rad" displayUnit="deg" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Ang_wheel_input.startTime"
+    valueReference = "1025"
+    description = "Output = offset for time &lt; startTime"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "9" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "557" startColumn = "5" endLine = "557" endColumn = "78" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" unit="s" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Dist_to_ball.amplitude"
+    valueReference = "1026"
+    description = "Amplitude of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "10" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "553" startColumn = "5" endLine = "553" endColumn = "56" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Dist_to_ball.freqHz"
+    valueReference = "1027"
+    description = "Frequency of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "11" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "554" startColumn = "5" endLine = "554" endColumn = "73" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" unit="Hz" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Dist_to_ball.offset"
+    valueReference = "1028"
+    description = "Offset of output signal"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "12" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "556" startColumn = "5" endLine = "556" endColumn = "54" fileWritable = "false">
+    <Real start="100.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Dist_to_ball.phase"
+    valueReference = "1029"
+    description = "Phase of sine wave"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "13" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "555" startColumn = "5" endLine = "555" endColumn = "57" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" unit="rad" displayUnit="deg" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Dist_to_ball.startTime"
+    valueReference = "1030"
+    description = "Output = offset for time &lt; startTime"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "14" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "557" startColumn = "5" endLine = "557" endColumn = "78" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" unit="s" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Rate_Steer.k"
+    valueReference = "1031"
+    description = "Constant output value"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "15" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "237" startColumn = "5" endLine = "237" endColumn = "54" fileWritable = "false">
+    <Real start="0.1" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Safety_Dist.k"
+    valueReference = "1032"
+    description = "Constant output value"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "16" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "237" startColumn = "5" endLine = "237" endColumn = "54" fileWritable = "false">
+    <Real start="100.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Veh_Speed.k"
+    valueReference = "1033"
+    description = "Constant output value"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "17" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "237" startColumn = "5" endLine = "237" endColumn = "54" fileWritable = "false">
+    <Real start="0.5" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Zero.k"
+    valueReference = "1034"
+    description = "Constant output value"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "18" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "237" startColumn = "5" endLine = "237" endColumn = "54" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Zero2.k"
+    valueReference = "1035"
+    description = "Constant output value"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "19" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "237" startColumn = "5" endLine = "237" endColumn = "54" fileWritable = "false">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add1.k1"
+    valueReference = "1036"
+    description = "Gain of upper input"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "20" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Math.mo" startLine = "986" startColumn = "5" endLine = "986" endColumn = "47" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add1.k2"
+    valueReference = "1037"
+    description = "Gain of lower input"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "21" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Math.mo" startLine = "987" startColumn = "5" endLine = "987" endColumn = "47" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add2.k1"
+    valueReference = "1038"
+    description = "Gain of upper input"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "22" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Math.mo" startLine = "986" startColumn = "5" endLine = "986" endColumn = "47" fileWritable = "false">
+    <Real start="-1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add2.k2"
+    valueReference = "1039"
+    description = "Gain of lower input"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "23" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Math.mo" startLine = "987" startColumn = "5" endLine = "987" endColumn = "47" fileWritable = "false">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.dc.k"
+    valueReference = "1040"
+    description = "Constant output value"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "24" classType = "rPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Sources.mo" startLine = "237" startColumn = "5" endLine = "237" endColumn = "54" fileWritable = "false">
+    <Real start="60.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Rate_Steer.y"
+    valueReference = "1041"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Rate_Steer.k"
+    classIndex = "0" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Safety_Dist.y"
+    valueReference = "1042"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Safety_Dist.k"
+    classIndex = "1" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Veh_Speed.y"
+    valueReference = "1043"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Veh_Speed.k"
+    classIndex = "2" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Zero.y"
+    valueReference = "1044"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Zero.k"
+    classIndex = "3" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "Zero2.y"
+    valueReference = "1045"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Zero2.k"
+    classIndex = "4" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.Ang_Steer1_Input"
+    valueReference = "1046"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Ang_steer1_input.y"
+    classIndex = "5" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Add_1.mo" startLine = "26" startColumn = "3" endLine = "27" endColumn = "201" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.Ang_Wheel_Input"
+    valueReference = "1047"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Ang_wheel_input.y"
+    classIndex = "6" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Add_1.mo" startLine = "6" startColumn = "3" endLine = "7" endColumn = "203" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.Dist_to_Ball"
+    valueReference = "1048"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Dist_to_ball.y"
+    classIndex = "7" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Add_1.mo" startLine = "28" startColumn = "3" endLine = "29" endColumn = "205" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.Steer_Ang1_Output"
+    valueReference = "1049"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Steer_Ang1_Output"
+    classIndex = "8" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/home/zoran/AdeptGBG/Controls/Add_1.mo" startLine = "2" startColumn = "3" endLine = "3" endColumn = "203" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add1.u1"
+    valueReference = "1050"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.dc.k"
+    classIndex = "9" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "311" startColumn = "5" endLine = "312" endColumn = "57" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add2.u1"
+    valueReference = "1051"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Ang_wheel_input.y"
+    classIndex = "10" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "311" startColumn = "5" endLine = "312" endColumn = "57" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.add2.y"
+    valueReference = "1052"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.abs1.u"
+    classIndex = "11" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "315" startColumn = "5" endLine = "316" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.asin1.y"
+    valueReference = "1053"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.add2.u2"
+    classIndex = "12" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "298" startColumn = "5" endLine = "299" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.dc.y"
+    valueReference = "1054"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.dc.k"
+    classIndex = "13" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "269" startColumn = "5" endLine = "270" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.division1.u1"
+    valueReference = "1055"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.add1.y"
+    classIndex = "14" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "311" startColumn = "5" endLine = "312" endColumn = "57" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.division1.u2"
+    valueReference = "1056"
+    description = "Connector of Real input signal 2"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Dist_to_ball.y"
+    classIndex = "15" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "313" startColumn = "5" endLine = "314" endColumn = "59" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.division1.y"
+    valueReference = "1057"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.asin1.u"
+    classIndex = "16" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "315" startColumn = "5" endLine = "316" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.product1.u2"
+    valueReference = "1058"
+    description = "Connector of Real input signal 2"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Dist_to_ball.y"
+    classIndex = "17" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "313" startColumn = "5" endLine = "314" endColumn = "59" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.product1.y"
+    valueReference = "1059"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.add1.u2"
+    classIndex = "18" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "315" startColumn = "5" endLine = "316" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.product2.u1"
+    valueReference = "1060"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.abs1.y"
+    classIndex = "19" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "311" startColumn = "5" endLine = "312" endColumn = "57" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.product2.y"
+    valueReference = "1061"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Steer_Ang1_Output"
+    classIndex = "20" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "315" startColumn = "5" endLine = "316" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.sign1.u"
+    valueReference = "1062"
+    description = "Connector of Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.add2.u2"
+    classIndex = "21" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "296" startColumn = "5" endLine = "297" endColumn = "58" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.sign1.y"
+    valueReference = "1063"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.product2.u2"
+    classIndex = "22" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "298" startColumn = "5" endLine = "299" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.sin1.u"
+    valueReference = "1064"
+    description = "Connector of Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Ang_steer1_input.y"
+    classIndex = "23" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "296" startColumn = "5" endLine = "297" endColumn = "58" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.sin1.y"
+    valueReference = "1065"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="add_11.product1.u1"
+    classIndex = "24" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "298" startColumn = "5" endLine = "299" endColumn = "56" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "greater1.u1"
+    valueReference = "1066"
+    description = "Connector of first Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Dist_to_ball.y"
+    classIndex = "25" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "1210" startColumn = "5" endLine = "1211" endColumn = "76" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "greater1.u2"
+    valueReference = "1067"
+    description = "Connector of second Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Safety_Dist.k"
+    classIndex = "26" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "1212" startColumn = "5" endLine = "1213" endColumn = "78" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "switch1.u1"
+    valueReference = "1068"
+    description = "Connector of first Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Veh_Speed.k"
+    classIndex = "27" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Logical.mo" startLine = "481" startColumn = "5" endLine = "482" endColumn = "76" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "switch1.u3"
+    valueReference = "1069"
+    description = "Connector of second Real input signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Zero2.k"
+    classIndex = "28" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Logical.mo" startLine = "485" startColumn = "5" endLine = "486" endColumn = "78" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "switch1.y"
+    valueReference = "1070"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="Veh_Fwd_Vel"
+    classIndex = "29" classType = "rAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Logical.mo" startLine = "487" startColumn = "5" endLine = "488" endColumn = "74" fileWritable = "false">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "greater1.y"
+    valueReference = "1071"
+    description = "Connector of Boolean output signal"
+    variability = "discrete" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "bAlg"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Interfaces.mo" startLine = "1214" startColumn = "5" endLine = "1215" endColumn = "74" fileWritable = "false">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.abs1.generateEvent"
+    valueReference = "1072"
+    description = "Choose whether events shall be generated"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "bPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Math.mo" startLine = "1218" startColumn = "5" endLine = "1219" endColumn = "76" fileWritable = "false">
+    <Boolean start="false" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add_11.sign1.generateEvent"
+    valueReference = "1073"
+    description = "Choose whether events shall be generated"
+    variability = "parameter" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "bPar"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Math.mo" startLine = "1293" startColumn = "5" endLine = "1294" endColumn = "76" fileWritable = "false">
+    <Boolean start="false" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "switch1.u2"
+    valueReference = "1074"
+    description = "Connector of Boolean input signal"
+    variability = "discrete" isDiscrete = "true"
+    causality = "internal" isValueChangeable = "false"
+    alias = "alias" aliasVariable="greater1.y"
+    classIndex = "0" classType = "bAli"
+    isProtected = "false" hideResult = "false"
+    fileName = "/usr/lib/omlibrary/Modelica 3.2.2/Blocks/Logical.mo" startLine = "483" startColumn = "5" endLine = "484" endColumn = "76" fileWritable = "false">
+    <Boolean fixed="false" />
+  </ScalarVariable>
+
+
+
+  </ModelVariables>
+
+
+</fmiModelDescription>
+

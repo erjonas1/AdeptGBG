@@ -1,4 +1,4 @@
-model try_withDist
+model try_withDist_noinputs
   Modelica.Blocks.Sources.Constant Zero(k = 0)  annotation(
     Placement(visible = true, transformation(origin = {-132, 134}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant Rate_Steer(k = 0.1)  annotation(
@@ -15,6 +15,8 @@ model try_withDist
     Placement(visible = true, transformation(origin = {-50, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-50, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Veh_Acc annotation(
     Placement(visible = true, transformation(origin = {-50, 142}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-50, 142}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput Ang_Steer1_Input "Angle between the ball and vehicle center axis. Input from VECS ???" annotation(
+    Placement(visible = true, transformation(origin = {-318, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-318, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Logical.Greater greater1 annotation(
     Placement(visible = true, transformation(origin = {-34, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant Safety_Dist(k = 100)  "mm" annotation(
@@ -23,25 +25,23 @@ model try_withDist
     Placement(visible = true, transformation(origin = {106, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant Zero2(k = 0)  annotation(
     Placement(visible = true, transformation(origin = {54, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput Dist_to_Ball "Distance to the ball projection on the vehicle center axis. Input from VECS ???" annotation(
+    Placement(visible = true, transformation(origin = {-318, -14}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-318, -14}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Add_1 add_11 annotation(
     Placement(visible = true, transformation(origin = {-25, 25}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  Modelica.Blocks.Sources.Sine Dist_to_ball(offset = 100)  annotation(
-    Placement(visible = true, transformation(origin = {-310, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Sine Ang_steer1_input annotation(
-    Placement(visible = true, transformation(origin = {-312, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Sine Ang_wheel_input annotation(
-    Placement(visible = true, transformation(origin = {-312, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput Ang_Wheel_Input "Angle between the steering wheel and the vehicle center axis. Input from VESC." annotation(
+    Placement(visible = true, transformation(origin = {-318, 56}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-318, 56}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation
-  connect(add_11.Ang_Wheel_Input, Ang_wheel_input.y) annotation(
-    Line(points = {{-70, 38}, {-302, 38}, {-302, 50}, {-300, 50}}, color = {0, 0, 127}));
-  connect(add_11.Ang_Steer1_Input, Ang_steer1_input.y) annotation(
-    Line(points = {{-70, 26}, {-300, 26}, {-300, 16}, {-300, 16}}, color = {0, 0, 127}));
-  connect(greater1.u1, Dist_to_ball.y) annotation(
-    Line(points = {{-46, -74}, {-300, -74}, {-300, -20}, {-298, -20}}, color = {0, 0, 127}));
-  connect(add_11.Dist_to_Ball, Dist_to_ball.y) annotation(
-    Line(points = {{-74, 14}, {-80, 14}, {-80, -20}, {-298, -20}, {-298, -20}}, color = {0, 0, 127}));
+  connect(add_11.Ang_Wheel_Input, Ang_Wheel_Input) annotation(
+    Line(points = {{-70, 38}, {-312, 38}, {-312, 56}, {-318, 56}}, color = {0, 0, 127}));
+  connect(add_11.Ang_Steer1_Input, Ang_Steer1_Input) annotation(
+    Line(points = {{-70, 26}, {-308, 26}, {-308, 20}, {-318, 20}}, color = {0, 0, 127}));
+  connect(add_11.Dist_to_Ball, Dist_to_Ball) annotation(
+    Line(points = {{-70, 12}, {-148, 12}, {-148, -12}, {-318, -12}, {-318, -14}}, color = {0, 0, 127}));
   connect(add_11.Steer_Ang1_Output, Steer_Ang1_Output) annotation(
     Line(points = {{30, 22}, {230, 22}, {230, 20}, {236, 20}}, color = {0, 0, 127}));
+  connect(Dist_to_Ball, greater1.u1) annotation(
+    Line(points = {{-318, -14}, {-166, -14}, {-166, -59}, {-46, -59}, {-46, -74}}, color = {0, 0, 127}));
   connect(switch1.y, Veh_Fwd_Vel) annotation(
     Line(points = {{117, -74}, {234, -74}}, color = {0, 0, 127}));
   connect(Zero2.y, switch1.u3) annotation(
@@ -60,4 +60,4 @@ equation
     Line(points = {{-120, 134}, {-58, 134}, {-58, 142}, {-50, 142}}, color = {0, 0, 127}));
   annotation(
     uses(Modelica(version = "3.2.2")),
-    Diagram);end try_withDist;
+    Diagram);end try_withDist_noinputs;
