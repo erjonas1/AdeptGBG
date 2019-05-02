@@ -24,20 +24,12 @@ model Add_1
   Modelica.Blocks.Interfaces.RealInput Ang_Steer1_Input annotation(
     Placement(visible = true, transformation(origin = {-182, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-182, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Dist_to_Ball annotation(
-    Placement(visible = true, transformation(origin = {-184, -50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-184, -50}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  Modelica.Blocks.Math.Max max1 annotation(
-    Placement(visible = true, transformation(origin = {-62, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Constant const(k = 100)  annotation(
-    Placement(visible = true, transformation(origin = {-96, -44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-196, -48}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-196, -48}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation
+  connect(division1.u2, Dist_to_Ball) annotation(
+    Line(points = {{-34, -24}, {-146, -24}, {-146, -48}, {-196, -48}, {-196, -48}}, color = {0, 0, 127}));
   connect(product1.u2, Dist_to_Ball) annotation(
-    Line(points = {{-108, -12}, {-138, -12}, {-138, -50}, {-184, -50}}, color = {0, 0, 127}));
-  connect(max1.u1, Dist_to_Ball) annotation(
-    Line(points = {{-74, -26}, {-122, -26}, {-122, -50}, {-184, -50}}, color = {0, 0, 127}));
-  connect(max1.u2, const.y) annotation(
-    Line(points = {{-74, -38}, {-84, -38}, {-84, -44}, {-84, -44}}, color = {0, 0, 127}));
-  connect(division1.u2, max1.y) annotation(
-    Line(points = {{-34, -24}, {-50, -24}, {-50, -32}, {-50, -32}}, color = {0, 0, 127}));
+    Line(points = {{-108, -12}, {-162, -12}, {-162, -48}, {-196, -48}}, color = {0, 0, 127}));
   connect(sin1.u, Ang_Steer1_Input) annotation(
     Line(points = {{-150, 0}, {-182, 0}}, color = {0, 0, 127}));
   connect(product2.y, Steer_Ang1_Output) annotation(

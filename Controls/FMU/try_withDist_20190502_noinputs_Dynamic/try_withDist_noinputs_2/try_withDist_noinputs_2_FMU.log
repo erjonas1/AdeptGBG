@@ -1,0 +1,4 @@
+rm -f try_withDist_noinputs_2.fmutmp/sources/try_withDist_noinputs_2_init.xml
+cp -a /usr/include/omc/c/* try_withDist_noinputs_2.fmutmp/sources/include/
+cp -a /usr/share/omc/runtime/c/fmi/buildproject/* try_withDist_noinputs_2.fmutmp/sources
+cp -a try_withDist_noinputs_2_FMU.libs try_withDist_noinputs_2.fmutmp/sources/
