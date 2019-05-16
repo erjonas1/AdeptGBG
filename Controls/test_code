@@ -1,0 +1,57 @@
+
+
+float dist_ball = 0; #Distance to the boll
+float vhcl_spd = 0; #Vehicle speed
+float vhcl_acc = 0; #Vehicle acceleration
+float vhcl_jerk = 0; #Vehicle jerk
+float steer_ang = 0; #Steer angle, i.e. angle between the vehicle axis and the line between the camera and the ball center
+float steer_ang_spd = 0; #Steer wheel angular speed (turning the wheels)
+
+float theta_vhcl = 0;
+float alpha_steer = 0; #From motor controller
+float alpha_cam = 0;  #From camera
+
+static float dc = 60; #Distance from camera to vehicle center
+static float excl_dist = 100; #Exclusion distance from the ball
+static float vhcl_stop_v = 0;
+static float steer_ang_stop = 0;
+static float steer_ang_spd_max = 0.75; #pi/4/s
+static float dist_max = 10000; #Above this limit we consider the ball out of range
+static float vhcl_spd_max = 0.1;
+static float vhcl_acc_max = 0;
+static float steer_angle_max = 0.75; #pi/4
+static float vhcl_jerk_max = 0;
+
+if (dist_ball < excl_dist || dist_ball > dist_max) {
+
+  vhcl_spd = vhcl_stop_v;
+  steer_ang = steer_ang_stop;
+  vhcl_acc = 0;
+  vhcl_jerk = 0;
+  steer_ang_spd = 0;
+
+}
+else {
+
+  theta_vhcl = asin(((dist_ball * alpha_cam) + dc)/dist_ball);
+  steer_ang = theta_vhcl - alpha_steer;
+
+  if (theta_vhcl > 0 && steer_ang < 0) {
+    
+    steer_ang = -1 * steer_ang;
+
+  }
+  elseif (theta_vhcl < 0 && steer_ang > 0) {
+
+    steer_ang = -1 * steer_ang;
+
+  }
+
+  vhcl_spd = vhcl_spd_max;
+  vhcl_acc = vhcl_acc_max;
+  vhcl_jerk = vhcl_jerk_max;
+  steer_ang_spd = steer_ang_spd_max;
+
+}
+
+
